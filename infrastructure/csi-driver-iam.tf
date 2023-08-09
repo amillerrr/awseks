@@ -1,7 +1,7 @@
 data "aws_iam_policy_document" "csi" {
   statement {
-    action = ["sts:AssumeRoleWithWebIdentity"]
-    effect = "Allow"
+    actions = ["sts:AssumeRoleWithWebIdentity"]
+    effect  = "Allow"
 
     condition {
       test     = "StringEquals"

@@ -28,10 +28,10 @@ resource "aws_eks_cluster" "flaskapp" {
 
   vpc_config {
     subnet_ids = [
-      aws_subnet.private_us_west_2a,
-      aws_subnet.private_us_west_2b,
-      aws_subnet.public_us_west_2a,
-      aws_subnet.public_us_west_2b
+      aws_subnet.private_us_west_2a.id,
+      aws_subnet.private_us_west_2b.id,
+      aws_subnet.public_us_west_2a.id,
+      aws_subnet.public_us_west_2b.id
     ]
   }
 

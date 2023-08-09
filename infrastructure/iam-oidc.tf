@@ -1,5 +1,5 @@
 data "tls_certificate" "eks" {
-  url = aws_eks_cluster.flaskapp.indentity[0].oicd[0].issuer
+  url = aws_eks_cluster.flaskapp.identity[0].oidc[0].issuer
 }
 
 resource "aws_iam_openid_connect_provider" "eks" {
