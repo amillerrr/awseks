@@ -1,32 +1,35 @@
+---
+apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: www
-  namespace: default
+  name: flaskapp_mysqldb
 spec:
-  serviceName: nginx
+  serviceName: flaskapp_mysqldb
   replicas: 1
   selector:
     matchLabels:
-      app: nginx
-    template:
-      metadata:
-        labels:
-          app: nginx
-      spec:
-        containers:
-        - name: nginx
-          image: registry.k8s.io/nginx-slim:0.8
-          ports:
-          - containerPort: 80
-            name: web
-          volumeMounts:
-          - name: www
-            mountPatch: /usr/share/nginx/html
-volumeClaimTemplates:
-- metadata:
-    name: www
-  spec:
-    accessModes: [ ReadWriteOnce ]
-    resources:
-      requests:
-        storage: 1Gi
+      app: flaskapp_mysqldb
+  template:
+    metadata:
+      labels:
+        app: flaskapp_mysqldb
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+      - name: flaskapp_mysqldb
+        image: 654717204467.dkr.ecr.us-west-2.amazonaws.com/flaskapp_mysqldb:1.0.0
+        ports:
+        - name: tcp
+          protocol: TCP
+          containerPort: 3306
+        volumeMounts:
+        - name: data
+          mountPath: /var/lib/mysql
+  volumeClaimTemplates:
+  - metadata:
+      name: data
+    spec:
+      accessModes: [ ReadWriteOnce ]
+      resources:
+        requests:
+          storage: 1Gi

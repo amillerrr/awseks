@@ -1,0 +1,28 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: flaskapp_mysqldb
+  labels:
+    app: flaskapp_mysqldb
+spec:
+  clusterIP: None
+  selector:
+    app: flaskapp_mysqldb
+  ports:
+    - name: tcp
+      protocol: TCP
+      port: 3306
+      targetPort: 3306
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: flaskapprepo
+spec:
+  selector:
+    app: flaskapprepo
+  ports:
+    port: 5000
+    targetPort: 5000

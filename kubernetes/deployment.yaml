@@ -1,0 +1,20 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flaskapprepo
+spec:
+  selector:
+    matchLabels:
+      app: flaskapprepo
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: flaskapprepo
+    spec:
+      containers:
+      - name: flaskapprepo
+        image: 654717204467.dkr.ecr.us-west-2.amazonaws.com/flaskapprepo:1.0.0
+        ports:
+        - containerPort: 5000

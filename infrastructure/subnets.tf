@@ -25,7 +25,7 @@ resource "aws_subnet" "private_us_west_2b" {
 resource "aws_subnet" "public_us_west_2a" {
   vpc_id                  = aws_vpc.main.id
   cidr_block              = "10.0.64.0/19"
-  availability_zone       = "us_west_2a"
+  availability_zone       = "us-west-2a"
   map_public_ip_on_launch = true
 
   tags = {
@@ -38,7 +38,7 @@ resource "aws_subnet" "public_us_west_2a" {
 resource "aws_subnet" "public_us_west_2b" {
   vpc_id                  = aws_vpc.main.id
   cidr_block              = "10.0.96.0/19"
-  availability_zone       = "us_west_2b"
+  availability_zone       = "us-west-2b"
   map_public_ip_on_launch = true
 
   tags = {

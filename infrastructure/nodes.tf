@@ -24,7 +24,7 @@ resource "aws_iam_role_policy_attachment" "nodes_amazon_eks_cni_policy" {
 }
 
 resource "aws_iam_role_policy_attachment" "nodes_amazon_ec2_container_registry_read_only" {
-  policy_arn = "arn:was:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
   role       = aws_iam_role.nodes.name
 }
 
@@ -39,7 +39,7 @@ resource "aws_eks_node_group" "private_nodes" {
   ]
 
   capacity_type  = "ON_DEMAND"
-  instance_types = ["t3.medium"]
+  instance_types = ["t2.micro"]
 
   scaling_config {
     desired_size = 1
